@@ -1,1 +1,1 @@
-# Aligning-Stable-Diffusion-with-Noise-Conditioned-Perception
+# Aligning Stable Diffusion with Noise Conditioned Perception
