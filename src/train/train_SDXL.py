@@ -930,12 +930,14 @@ def main(args):
 
     def preprocess_train(examples):
         all_pixel_values = []
-        images = [Image.open('/home/jovyan/Gambashidze/train/' + uid + '.jpg').convert("RGB") for uid in examples["image_0_uid"]]
+        # TODO: make the code universal for both huggingface and local jpg format
+        
+        images = [Image.open(args.dataset_name + uid + '.jpg').convert("RGB") for uid in examples["image_0_uid"]]
         original_sizes = [(image.height, image.width) for image in images]
         crop_top_lefts = []
 
         for col_name in ['image_0_uid',	'image_1_uid']:
-            images = [Image.open('/home/jovyan/Gambashidze/train/' + uid + '.jpg').convert("RGB") for uid in examples[col_name]]
+            images = [Image.open(args.dataset_name + uid + '.jpg').convert("RGB") for uid in examples[col_name]]
                 # Need to bring down the image to the same resolution.
                 # This seems like the simplest reasonable approach.
                 # "::-1" because PIL resize takes (width, height).
